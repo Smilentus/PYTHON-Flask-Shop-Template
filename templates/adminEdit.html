@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <title>Управление сайтом</title>
+</head>
+
+<body>
+    <div class="addNewBlock">
+        <h2>Редактировать товар</h2>
+        <form action="/admin/applyEdit" method='POST'>
+            <label for="articleRead">Артикул</label>
+            <input type="text" name="article" id="articleRead" value="{{ data[0] }}" readonly>
+            <label for="nameInput">Наименование</label>
+            <input type="text" name="name" id="nameInput" placeholder="Наименование" value="{{ data[1] }}">
+            <label for="descrInput">Описание</label>
+            <textarea name="descr" id="descrInput" cols="60" rows="20" placeholder="Описание...">{{ data[2] }}</textarea>
+            <label for="priceInput">Стоимость</label>
+            <input type="number" name="price" id="priceInput" placeholder="Стоимость" value="{{ data[4] }}">
+            <label for="brandInput">Бренд</label>
+            <input type="text" name="brand" id="brandInput" placeholder="Бренд" value="{{ data[6] }}">
+            <label for="countryInput">Страна производитель</label>
+            <input type="text" name="country" id="countryInput" placeholder="Страна производитель" value="{{ data[8] }}">
+            <label for="materialInput">Материал</label>
+            <input type="text" name="material" id="materialInput" placeholder="Материал" value="{{ data[7] }}">
+            <label for="compositionInput">Состав</label>
+            <input type="text" name="composition" id="compositionInput" placeholder="Состав" value="{{ data[9] }}">
+            <label for="catalogNumInput">Номер каталога</label>
+            <input type="text" name="catalogNum" id="catalogNumInput" placeholder="Номер каталога" value="{{ data[10] }}">
+            <label for="catalogInput">Наименование каталога</label>
+            <input type="text" name="catalogName" id="catalogInput" placeholder="Наименование каталога" value="{{ data[11] }}">
+            <label for="catalogNumInput">Номер категории</label>
+            <input type="text" name="filterNum" id="filterNumInput" placeholder="Номер категории" value="{{ data[12] }}">
+            <label for="catalogInput">Наименование категории</label>
+            <input type="text" name="filterName" id="filterInput" placeholder="Наименование категории" value="{{ data[13] }}">
+            <input type="submit" value="Подтвердить">
+            <a href="/admin">Отменить</a>
+        </form>
+    </div>
+</body>
+
+</html>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>

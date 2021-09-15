@@ -1,0 +1,142 @@
+#galleryContainer {
+    
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows:    repeat(9, 200px);
+    
+    width: 800px;
+    margin: 50px auto;
+
+    grid-gap: 10px;
+    grid-template-areas:
+        "a a b c"
+        "a a b c"
+        "e d d f"
+        "g h h i"
+        "g h h i"
+        "k l m m"
+        "n o p p"
+        "n r p p"
+        "s s t u";
+}
+
+#galleryContainer > img {
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+    box-shadow: 0 0 5px 5px rgb(136, 0, 0);
+    object-fit: cover;
+}
+
+#galleryContainer > img:hover {
+    transform: scale(1.1);
+}
+
+.blockA { grid-area: a; }
+.blockB { grid-area: b; }
+.blockC { grid-area: c; }
+.blockD { grid-area: d; }
+.blockE { grid-area: e; }
+.blockF { grid-area: f; }
+.blockG { grid-area: g; }
+.blockH { grid-area: h; }
+.blockI { grid-area: i; }
+.blockL { grid-area: l; }
+.blockK { grid-area: k; }
+.blockM { grid-area: m; }
+.blockN { grid-area: n; }
+.blockO { grid-area: o; }
+.blockP { grid-area: p; }
+.blockR { grid-area: r; }
+.blockS { grid-area: s; }
+.blockT { grid-area: t; }
+.blockU { grid-area: u; }
+
+#modalBackground {
+    width: 100%;
+    height: 100%;
+
+    z-index: 1000;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#fullScreenImage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: auto;
+    height: 80%;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+#fullLeftArrow,
+#fullRightArrow,
+#fullCloseBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#fullCloseBtn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+
+    font-size: 25px;
+}
+
+#modalButtons {
+    position: absolute;
+
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 200px;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#relativeBlock {
+    position: relative;
+    width: 98vw;
+    height: 98vh;
+}
+
+#modalWindow {
+    position: fixed;
+
+    width: 98vw;
+    height: 98vh;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 2000;
+}

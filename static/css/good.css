@@ -1,0 +1,152 @@
+h1
+{
+    font-size: 40px;
+    margin: 40px;
+}
+
+.itemContainer
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.buyPanel > img
+{
+    width: 600px;
+    height: 600px;
+    object-fit: cover;
+    margin-right: 50px;
+}
+
+.buyPanel > div
+{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.buyPanel
+{
+    display: flex;
+    flex-direction: row;
+
+    margin: 0 auto;
+}
+
+.inputAmountBtn
+{
+    width: 40px;
+    height: 40px;
+    
+    font-size: 30px;
+
+    border: none;
+    background-color: rgb(230, 230, 230);
+
+    cursor: pointer;
+}
+
+.inputAmountBtn:hover
+{
+    background-color: rgb(200, 200, 200);
+}
+
+#inputAmount
+{
+    height: 40px;
+    width: 80px;
+    text-align: center;
+
+    font-size: 20px;
+
+    border: none;
+    background-color: rgb(230, 230, 230);
+}
+
+.buyPanel > div form
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.buyPanel > div > p
+{
+    margin-bottom: 40px;
+    color: gray;
+}
+
+#inputSubmitBuy
+{
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+
+    margin-left: 20px;
+
+    background-color: rgb(200, 0, 0);
+    border: 1px solid white;
+    color: white;
+}
+
+.extraAbilities
+{
+    margin: 50px 0;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.abilityItem
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.abilityItem > img
+{
+    width: 50px;
+    height: 50px;
+
+    margin-right: 25px;
+}
+
+.abilityItem > p
+{
+    font-size: 16px;
+    color: black;
+}
+
+.characteristics
+{
+    margin-top: 60px;
+    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.characteristics > p
+{
+    margin: 10px;
+}
+
+.charGrayLower
+{
+    color: gray;
+    margin: 10px 0 0 0 !important;
+}
+
+.description
+{
+    padding: 0 100px;
+}
+
+h2
+{
+    margin: 20px 5px;
+}

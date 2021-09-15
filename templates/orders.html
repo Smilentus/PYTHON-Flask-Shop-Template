@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block HeaderTitle %} <title>Заказы</title> {% endblock %}
+{% block HeaderStyles %} <link rel="stylesheet" href="{{ url_for('static', filename='css/orders.css') }}"> {% endblock %}
+
+{% block Content %}
+<div class="contentWidth">
+    <h1>Заказы</h1>
+    
+    {% if orders|length > 0 %}
+    <div class="ordersContainer">
+        {% for order in orders %}
+        <div class="orderBlock">
+            <h2 class="orderTicket">Номер заказа: {{ order['order'] }}</h2>
+            <h2 class="orderTotalPrice">Итоговая стоимость: {{ order['totalPrice'] }} руб.</h2>
+            <div class="orderGoods">
+                {% for item in order['goods']%}
+                <div class="orderItem">
+                    <a href="/good/{{item[0]}}">
+                        <img src="{{ url_for('static', filename='goods/' + item[2] + '.jpg') }}" alt="{{ item[1] }}" class="goodIcon">
+                        <p class="goodTitle">{{ item[1] }}</p>
+                    </a>
+                    <p class="lowerPrice">{{ item[3] }} руб./шт.</p> / <p class="goodAmount">{{ item[4] }} шт.</p> / <p class="goodPrice"> Стоимость: {{ item[5] }} руб.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="warningSign">
+        <p>Список заказов пуст!</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

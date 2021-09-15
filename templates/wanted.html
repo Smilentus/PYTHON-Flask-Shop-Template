@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block HeaderTitle %} <title>Список желаемого</title> {% endblock %}
+{% block HeaderStyles %} <link rel="stylesheet" href="{{ url_for('static', filename='css/wanted.css') }}"> {% endblock %}
+
+{% block Content %}
+<div class="contentWidth">
+    <h1>Избранное</h1>
+    
+    {% if data|length > 0 %}
+    <div class="wantedContainer">
+        {% for item in data %}
+        <div class="goodItem">
+            <a href="/good/{{item[1]}}">
+                <img src="{{ url_for('static', filename='goods/' + item[3] + '.jpg') }}" alt="{{ item[2] }}" class="goodIcon">
+                <p class="goodTitle">{{ item[2] }}</p>
+            </a>
+            <p class="goodPrice">{{ item[4] }} руб./шт.</p>
+            <div class="goodButtons">
+                <a href="/api/fastAddToBasket/{{ item[1] }}" class="boxBtn">Купить</a>
+                <a href="/api/dropFromWanted/{{ item[1] }}" class="circleBtn"></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="warningSign">
+        <p>Список пуст!</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

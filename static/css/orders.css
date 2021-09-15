@@ -1,0 +1,114 @@
+.ordersContainer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1
+{
+    padding: 30px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.orderBlock
+{
+    position: relative;
+    border: 1px solid gray;
+
+    width: 80%;
+    padding: 30px;
+}
+
+.orderGoods
+{
+    padding: 50px 30px;
+}
+
+.orderTicket
+{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+
+.orderTotalPrice
+{
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+}
+
+.orderItem
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.goodTitle
+{
+    text-align: center;
+    font-size: 18px;
+    margin: 0 0 0 25px;
+}
+
+.goodPrice
+{
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 15px;
+
+    width: 250px;
+}
+
+.lowerPrice
+{
+    text-align: right;
+    font-size: 15px;
+    color: gray;
+    padding: 0 15px;
+    width: 150px;
+}
+
+.goodAmount
+{
+    text-align: right;
+    font-size: 14px;
+    color: gray;
+    padding: 0 15px;
+    width: 100px;
+}
+
+.orderItem > a
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    color: black;
+    text-decoration: none;
+
+    width: 70%;
+}
+
+.orderItem:hover
+{
+    box-shadow: 0 0 10px 3px rgba(226, 226, 226, 0.7);    
+}
+
+.orderItem > a:hover .goodTitle
+{
+    color: rgb(200, 0, 0);
+}
+
+.goodIcon
+{
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+}

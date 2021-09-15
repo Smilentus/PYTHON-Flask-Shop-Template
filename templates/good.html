@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block HeaderTitle %} <title>Товар</title> {% endblock %}
+{% block HeaderStyles %} <link rel="stylesheet" href="{{ url_for('static', filename='css/good.css') }}"> {% endblock %}
+
+{% block Content %}
+<div class="contentWidth">
+    <div class="breadcrumbs">
+        <a href="/">Главная</a> <p>></p> <a href="/catalog">Каталог</a> <p>></p> <a href="/catalog/filters/{{ breadcrumbs[0][0] }}">{{ breadcrumbs[0][1] }}</a> <p>></p> <a href="/catalog/filters/goods/{{ breadcrumbs[1][0] }}">{{ breadcrumbs[1][1] }}</a> <p>></p> <p>{{ breadcrumbs[2][1] }}</p>
+    </div>
+
+    <h1>{{ data[1] }}</h1>
+    
+    <div class="itemContainer">
+        <div class="buyPanel">
+            <img src="{{ url_for('static', filename='goods/' + data[3] + '.jpg') }}" alt="{{ data[1] }}" >
+            <div>
+                <p>Артикул: {{ data[0] }}</p>
+                
+                <form action="/api/addToBasket/{{ data[0] }}" method="POST">
+                    <button id="inputMinus" class="inputAmountBtn">-</button>
+                    <input id="inputAmount" type="text" name="inputAmount" min="1" value="1" readonly>
+                    <button id="inputPlus" class="inputAmountBtn">+</button>
+                    <input id="inputSubmitBuy" type="submit" value="Купить">
+                </form>
+
+                <h2>{{ data[4] }} руб./шт.</h2>
+
+                <div class="characteristics">
+                    <p class="charGrayLower">Бренд</p>
+                    <p>{{ data[6] }}</p>
+                    <p class="charGrayLower">Состав</p>
+                    <p>{{ data[9] }}</p>        
+                    <p class="charGrayLower">Материал</p>
+                    <p>{{ data[7] }}</p>
+                    <p class="charGrayLower">Страна производитель</p>
+                    <p>{{ data[8] }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="extraAbilities">
+            <div class="abilityItem">
+                <img src="{{ url_for('static', filename='img/return.png') }}" alt="Возврат">
+                <p>Возврат и обмен товара</p>
+            </div>
+            <div class="abilityItem">
+                <img src="{{ url_for('static', filename='img/delivery.png') }}" alt="Доставка">
+                <p>Бесплатная доставка при заказе свыше 3000 рублей</p>
+            </div>
+            <div class="abilityItem">
+                <img src="{{ url_for('static', filename='img/medal.png') }}" alt="Гарантия">
+                <p>Гарантия качества</p>
+            </div>
+        </div>
+        <div class="description">
+            <h2>Описание</h2>
+            <p>{{ data[2] }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block FooterScripts %} 
+<script src="{{ url_for('static', filename='js/good.js') }}"></script>
+{% endblock %}

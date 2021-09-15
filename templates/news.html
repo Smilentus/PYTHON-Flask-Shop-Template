@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block HeaderTitle %} <title>Новостная лента</title> {% endblock %}
+{% block HeaderStyles %} <link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}"> {% endblock %}
+
+{% block Content %}
+<div class="contentWidth">
+    
+</div>
+{% endblock %}
+
+{% block FooterScripts %} 
+<script src="{{ url_for('static', filename='js/news.js') }}"></script>
+{% endblock %}

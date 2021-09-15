@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block HeaderTitle %} <title>Галерея</title> {% endblock %}
+{% block HeaderStyles %} <link rel="stylesheet" href="{{ url_for('static', filename='css/gallery.css') }}"> {% endblock %}
+
+{% block Content %}
+<div class="contentWidth">
+    <div id="galleryContainer">
+
+    </div>
+</div>
+
+<div id="modalBackground" class="hidden"></div>
+<div id="modalWindow" class="hidden">
+    <div id="relativeBlock">
+        <div id="fullCloseBtn"> × </div>
+        <img src="" id="fullScreenImage">
+        <div id="modalButtons">
+            <div id="fullLeftArrow"> ⟵ </div>
+            <div id="fullRightArrow"> ⟶ </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block FooterScripts %} 
+<script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
+{% endblock %}

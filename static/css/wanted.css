@@ -1,0 +1,122 @@
+
+.goodItem
+{
+    display: flex;
+    flex-direction: column;
+
+    width: 280px;
+
+    margin: 20px;
+    padding: 10px;
+}
+
+.goodItem > a
+{
+    color: black;
+    text-decoration: none;
+
+    width: 100%;
+
+    margin: 10px auto;
+}
+
+.goodItem:hover
+{
+    box-shadow: 0 0 10px 3px rgba(226, 226, 226, 0.7);    
+}
+
+.goodItem > a:hover .goodTitle
+{
+    color: rgb(200, 0, 0);
+}
+
+.goodTitle
+{
+    text-align: center;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.goodPrice
+{
+    text-align: center;
+    font-size: 30px;
+}
+
+.catalogItemIcon
+{
+    width: 80%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.goodIcon
+{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.goodButtons
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.boxBtn
+{
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    padding: 10px 15px;
+    border: 1px solid white;
+    background-color: rgb(200, 0, 0);
+    color: white;
+    text-decoration: none;
+}
+
+.circleBtn
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+
+    background-image: url('/static/img/heartRed.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 2px;
+}
+
+.circleBtn:hover
+{
+    background-image: url('/static/img/brokenheart.png');
+    background-size: 80%;
+    background-position-x: 4px;
+    background-position-y: 5px;
+    background-repeat: no-repeat;
+}
+
+h1
+{
+    margin: 30px;
+}
+
+.wantedContainer
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.warningSign
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 30px;
+    margin: 30px;
+}

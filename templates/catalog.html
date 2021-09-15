@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block HeaderTitle %} <title>Каталог</title> {% endblock %}
+{% block HeaderStyles %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/catalog.css') }}">
+{% endblock %}
+
+{% block Content %}
+<div class="contentWidth">
+    <div class="breadcrumbs">
+        {% if catalogType == 'catalog' %}
+        <a href="/">Главная</a> <p>></p> <p>Каталог</p>
+        {% elif catalogType == 'filter' %}
+        <a href="/">Главная</a> <p>></p> <a href="/catalog">Каталог</a> <p>></p> <p>{{ breadcrumbs[0][1] }}</p>
+        {% else %}
+        <a href="/">Главная</a> <p>></p> <a href="/catalog">Каталог</a> <p>></p> <a href="/catalog/filters/{{ breadcrumbs[0][0] }}">{{ breadcrumbs[0][1] }}</a> <p>></p> <p>{{ breadcrumbs[1][1] }}</p>
+        {% endif %}
+    </div>
+    <h1>Каталог</h1>
+    
+    <div class="catalogContent">
+        <!-- Сортировка по каталогу -->
+        {% if catalogType == 'catalog' %}
+            {% if catalog|length > 0 %}
+                {% for item in catalog %}
+                <a class="catalogItem" href="/catalog/filters/{{ item[0] }}">
+                    <img src="{{ url_for('static', filename='goods/catalog_' + item[0] + '.jpg') }}" alt="{{ item[1] }}" class="catalogItemIcon">
+                    <p class="catalogItemTitle">{{ item[1] }}</p>
+                </a>
+                {% endfor %}
+            {% else %}
+                <p class="warningCatalogSign">Каталог пуст!</p>
+            {% endif %}
+        <!-- Сортировка по подтипу -->
+        {% elif catalogType == 'filter' %}
+            {% if catalog|length > 0 %}
+                {% for item in catalog %}
+                <a class="catalogItem" href="/catalog/filters/goods/{{ item[0] }}">
+                    <img src="{{ url_for('static', filename='goods/filter_' + item[0] + '.jpg') }}" alt="{{ item[1] }}" class="catalogItemIcon">
+                    <p class="catalogItemTitle">{{ item[1] }}</p>
+                </a>
+                {% endfor %}
+            {% else %}
+            <p class="warningCatalogSign">Каталог пуст!</p>
+            {% endif %}
+        <!-- Сортировка по товарам -->
+        {% else %}
+            {% if catalog|length > 0 %}
+                {% for item in catalog %}
+                <div class="goodItem">
+                    <a href="/good/{{item[0]}}">
+                        <img src="{{ url_for('static', filename='goods/' + item[4] + '.jpg') }}" alt="{{ item[1] }}" class="goodIcon">
+                        <p class="goodTitle">{{ item[1] }}</p>
+                    </a>
+                    <p class="goodPrice">{{ item[2] }} руб./шт.</p>
+                    <div class="goodButtons">
+                        <a href="/api/fastAddToBasket/{{ item[0] }}" class="boxBtn">Купить</a>
+                        <a href="/api/fastAddToWanted/{{ item[0] }}" class="circleBtn"></a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <p class="warningCatalogSign">Каталог пуст!</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

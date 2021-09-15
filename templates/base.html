@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% block HeaderTitle %} <title> Заголовок </title> {% endblock %}
+    {% block HeaderLinks %} {% endblock %}
+    {% block HeaderStyles %} {% endblock %}
+</head>
+<body>
+    {% block Forms %}
+    {% if isAuth == false %}
+    <div id="authWindow" class="authWindow">
+        <div class="windowBorder">
+            <div class="upperBlock">
+                <p class="big-size-text">Личный кабинет</p>
+                <button id="closeAuthWindowBtn">⮾</button>
+            </div>
+            <form action="/api/authUser" method="POST">
+                <label for="inputLogin">E-Mail <span class="red-sign">*</span> </label>
+                <input id="inputLogin" type="email" name="inputLogin" required>
+                <label for="inputPassword">Пароль <span class="red-sign">*</span> </label>
+                <input id="inputPassword" type="password" name="inputPassword" required>
+                <input class="submitButton" type="submit" value="Войти">
+            </form>
+            <div class="lowerBlock">
+                <a class="registerButton" href="/register">Регистрация</a>
+                <p>Вам будет доступно: ... ... и ... </p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endblock %}
+
+    <nav>
+        <div class="upperNav">
+            <a href="/" class="navLogo"><img src="{{ url_for('static', filename='./img/logoNav.jpg') }}" alt=""></a>
+            <div class="upperButtons">
+                <div class="navButtons">
+                    <a href="/wanted" id="wantedNavBtn"> <p>{{ counters[0] }}</p> </a>
+                    <a href="/basket" id="basketNavBtn"> <p>{{ counters[1] }}</p> </a>
+                </div>
+                {% if isAuth %}
+                <a href="/profile" id="profileBtnNav"> <p>Личный кабинет</p> </a>
+                {% else %}
+                <button id="authBtn"> <p id="btn1">Войти</p> <p id="btn2">Личный кабинет</p> </button>
+                {% endif %}
+            </div>
+        </div>
+        <div class="lowerNav">
+            <a href="/catalog">Каталог</a>
+            <a href="/gallery">Галерея</a>
+            <a href="/about">О компании</a>
+        </div>
+    </nav>
+
+    {% block Content %} {% endblock %}
+
+    {% block Footer %} {% endblock %}
+    <footer>
+        <div class="footerVertical">
+            <div class="footerHorizontal">
+                <div class="footerContacts">
+                    <p><img src="{{ url_for('static', filename='img/phone.svg') }}" alt="иконка телефона"> +9-999-999-99-99</p>
+                    <p><img src="{{ url_for('static', filename='img/email.svg') }}" alt="иконка email"> email@email.com</p>
+                    <p><img src="{{ url_for('static', filename='img/map.svg') }}" alt="иконка адреса"> 454014, г.Челябинск, какая-то улица</p>
+                </div> 
+            </div>
+            <div>
+                <p>2021 © Maxim Nikulin for MIDIS</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+    {% block FooterScripts %} {% endblock %}
+</body>
+</html>

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block HeaderTitle %} <title>Главная</title> {% endblock %}
+{% block HeaderStyles %} <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"> {% endblock %}
+
+{% block Content %}
+<div class="contentWidth">
+    <div class="mainSlider">
+        <div class="slider-container">
+            <div id="sliderLeft" > ⟵ </div>
+            <div id="sliderRight"> ⟶ </div>
+            <div class="slider-main">
+                <div class="slider-main-slide">
+                    <div class="slider-block" id="lastClone">
+                        <img src="{{ url_for('static', filename='./img/slider3.jpg') }}" alt="">
+                        <div class="slider-content">
+                            <h2>Огромный выбор текстиля</h2>
+                            <p>Более 100 моделей различного состава и производства</p>
+                        </div>
+                    </div>
+                    <div class="slider-block">
+                        <img src="{{ url_for('static', filename='./img/delivery.jpg') }}" alt="">
+                        <div class="slider-content">
+                            <h2>Бесплатная курьерская доставка</h2>
+                            <p>При заказе от 5000 рублей в общей сумме</p>
+                        </div>
+                    </div>
+                    <div class="slider-block">
+                        <img src="{{ url_for('static', filename='./img/slider2.jpg') }}" alt="">
+                        <div class="slider-content">
+                            <h2>Трендовые расцветки постельного белья в европейском стиле</h2>
+                            <p>Продукция высокого качества из поплина; перклина; сатина и других</p>
+                        </div>
+                    </div>
+                    <div class="slider-block">
+                        <img src="{{ url_for('static', filename='./img/slider3.jpg') }}" alt="">
+                        <div class="slider-content">
+                            <h2>Огромный выбор текстиля</h2>
+                            <p>Более 100 моделей различного состава и производства</p>
+                        </div>
+                    </div>
+                    <div class="slider-block" id="firstClone">
+                        <img src="{{ url_for('static', filename='./img/delivery.jpg') }}" alt="">
+                        <div class="slider-content">
+                            <h2>Бесплатная курьерская доставка</h2>
+                            <p>При заказе от 5000 рублей в общей сумме</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mainOurCapables">
+        <div class="capableBlock">
+            <p>Бесплатная доставка по всей России от 5000 рублей</p>
+        </div>
+        <div class="capableBlock">
+            <p>Бонусная карта покупателям</p>
+        </div>
+        <div class="capableBlock">
+            <p>Именная вышивка на материале</p>
+        </div>
+    </div>
+    
+    <div class="mainCatalog">
+        <h2>Популярные категории магазина <a href="/catalog">Весь каталог</a></h2>
+        <div class="catalogContent">
+        {% if catalog|length > 0 %}
+            {% for item in catalog %}
+            <a class="catalogItem" href="/catalog/filters/{{ item[0] }}">
+                <img src="{{ url_for('static', filename='goods/catalog_' + item[0] + '.jpg') }}" alt="{{ item[1] }}" class="catalogItemIcon">
+                <p class="catalogItemTitle">{{ item[1] }}</p>
+            </a>
+            {% endfor %}
+        {% else %}
+            <p class="warningCatalogSign">Каталог пуст!</p>
+        {% endif %}
+        </div>
+    </div>
+
+    <div class="mainMoreBuyable">
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block FooterScripts %} 
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block HeaderTitle %} <title>Корзина</title> {% endblock %}
+{% block HeaderStyles %} <link rel="stylesheet" href="{{ url_for('static', filename='css/basket.css') }}"> {% endblock %}
+
+{% block Content %}
+<div class="contentWidth">
+    <h1>Корзина</h1>
+    
+    {% if data|length > 0 %}
+    <form class="wantedContainer" action="/api/appendOrder" method="POST">
+        <div class="floatBasket">
+            <h2>Итого</h2>
+            <div>
+                <input id="appendOrderBtn" type="submit" value="Оформить заказ">
+                <button id="chooseAllBtn">Выбрать все</button>
+                <button id="unChooseAllBtn">Снять выбор</button>
+            </div>
+            {% with messages = get_flashed_messages() %}
+            <div class="flashedErrors">
+                {% if messages %}
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+            {% endwith %}
+        </div>
+        {% for item in data %}
+        <div class="goodItem" >
+            <input type="checkbox" class="custom-checkbox" name="goodChoosing" value="{{ item[1] }}" id="choose_{{ item[1] }}">
+            <label for="choose_{{ item[1] }}"></label>
+            <div>
+                <a href="/good/{{item[1]}}">
+                    <img src="{{ url_for('static', filename='goods/' + item[4] + '.jpg') }}" alt="{{ item[3] }}" class="goodIcon">
+                    <p class="goodTitle">{{ item[3] }}</p>
+                </a>
+                <p class="goodPrice">{{ item[5] }} руб./шт.</p>
+                <input class="inputAmount" name="inputAmount_{{ item[1] }}" type="number" min=1 value="{{ item[2] }}">
+            </div>
+            <a href="/api/dropFromBasket/{{ item[1] }}" class="circleBtn"></a>
+        </div>
+        {% endfor %}
+    </form>
+    {% else %}
+    <div class="warningSign">
+        <p>Список пуст!</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block FooterScripts %} 
+<script src="{{ url_for('static', filename='js/basket.js') }}"></script>
+{% endblock %}

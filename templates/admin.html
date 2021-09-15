@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <title>Управление сайтом</title>
+</head>
+<body>
+    <div class="contentWidth">
+        <nav>
+            <a href="/">Главная</a>
+            <a href="/catalog">Каталог</a>
+            <a href="/admin/logout">Выход</a>
+        </nav>
+        <div class="addNewBlock">
+            <h2>Добавить новый товар</h2>
+            <form action="/admin/addNew" method='POST'>
+                <label for="nameInput">Наименование</label>
+                <input type="text" name="name" id="nameInput" placeholder="Наименование">
+                <label for="descrInput">Описание</label>
+                <textarea name="descr" id="descrInput" cols="60" rows="20" placeholder="Описание..."></textarea>
+                <label for="priceInput">Стоимость</label>
+                <input type="number" name="price" id="priceInput" placeholder="Стоимость">
+                <label for="brandInput">Бренд</label>
+                <input type="text" name="brand" id="brandInput" placeholder="Бренд">
+                <label for="countryInput">Страна производитель</label>
+                <input type="text" name="country" id="countryInput" placeholder="Страна производитель">
+                <label for="materialInput">Материал</label>
+                <input type="text" name="material" id="materialInput" placeholder="Материал">
+                <label for="compositionInput">Состав</label>
+                <input type="text" name="composition" id="compositionInput" placeholder="Состав">
+                <label for="catalogNumInput">Номер каталога</label>
+                <input type="number" name="catalogNum" id="catalogNumInput" placeholder="Номер каталога">
+                <label for="catalogInput">Наименование каталога</label>
+                <input type="text" name="catalogName" id="catalogInput" placeholder="Наименование каталога">
+                <label for="catalogNumInput">Номер категории</label>
+                <input type="number" name="filterNum" id="filterNumInput" placeholder="Номер категории">
+                <label for="catalogInput">Наименование категории</label>
+                <input type="text" name="filterName" id="filterInput" placeholder="Наименование категории">
+                <input type="submit" value="Добавить">
+            </form>
+        </div>        
+        <div class="goodsContainer">
+            {% if data|length > 0 %}
+            {% for item in data %}
+            <div class="goodItem">
+                <a href="/good/{{ item[0] }}">
+                    <img src="{{ url_for('static', filename='goods/' + item[3] + '.jpg') }}" alt="{{ item[1] }}" class="goodIcon">
+                    <p class="goodTitle">{{ item[1] }}</p>
+                </a>
+                <a href="/admin/remove/{{ item[0] }}"> <img src="{{ url_for('static', filename='img/trashcanClosed.png') }}" alt="" class="editIcon"> Удалить</a>
+                <a href="/admin/edit/{{ item[0] }}"> <img src="{{ url_for('static', filename='img/editIcon.png') }}" alt="" class="editIcon"> Редактировать</a>
+            </div>
+            {% endfor %}
+            {% else %}
+                <h2>Каталог товаров пуст!</h2>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
